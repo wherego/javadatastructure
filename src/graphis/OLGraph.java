@@ -19,16 +19,18 @@ public class OLGraph {
 	        maxnum=num;  
 	    }  
 	      
-	    int Locate_Vex(String v)  
+	   int Locate_Vex(String v)  
 	    {  
 	        for(int i=0;i<vexnum;i++)  
 	        {  
-	            if(xlist[i].data==v) 	            	
-	                return i;  
-	        }  
-	        return -1;  
+	            if(xlist[i].data.equals(v)){
+	            	return i;  
+	            	}                     	            
+	        }   
+	    	return -1;	 
 	    }  
 	  
+	
 	    void CreateDG_OLG()  
 	    {  
 	        //构造有向图  
@@ -57,18 +59,18 @@ public class OLGraph {
 	        {  
 	        	System.out.println("输入第"+k+1+"条边的两个顶点(尾—>头的顺序)：");
 	            v1=input.next();
-	            v2=input.next();  
-	            i=Locate_Vex(v1);  
-	            j=Locate_Vex(v2);  
-	              
-	            while(i == -1 || j == -1)  
+	            v2=input.next();
+	            i=Locate_Vex(v1);	                       
+	            j=Locate_Vex(v2);
+	           while(i == -1 || j == -1)  
 	            {  
 	            	 System.out.println("结点位置输入错误,重新输入: ");  
 	            	v1=input.next();
 	 	            v2=input.next();    
-	                i=Locate_Vex(v1);  
-	                j=Locate_Vex(v2);     
-	            }         
+	 	           i=Locate_Vex(v1);		           
+		            j=Locate_Vex(v2);
+		              
+	            }        
 	              
 	            ArcBox p=new ArcBox();  
 	            p.tailvex=i;  
@@ -85,7 +87,8 @@ public class OLGraph {
 	    //统计顶点入度  
 	    int In_degree(String v)  
 	    {  
-	        int pos=Locate_Vex(v);  
+	    	
+	        int pos=Locate_Vex(v); 
 	        if(pos == -1)  
 	        {  
 	        	System.out.println("结点不在图中\n");  
@@ -104,7 +107,7 @@ public class OLGraph {
 	    //统计顶点出度  
 	    int Out_degree(String v)  
 	    {  
-	        int pos=Locate_Vex(v);  
+	    	 int pos=Locate_Vex(v); 
 	        if(pos == -1)  
 	        {  
 	        	System.out.println("结点不在图中\n");  
